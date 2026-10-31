@@ -1,11 +1,16 @@
 {
   "expo": {
-    "name": "Pawsitive_Pet_academy_tiara-XHAW-Summative_2-",
-    "slug": "Pawsitive_Pet_academy_tiara-XHAW-Summative_2-",
+    "name": "Pawsitive Pet Academy",
+    "slug": "pawsitive-pet-academy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/pawsitive_original_logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#E8F3F1"
+    },
     "ios": {
       "supportsTablet": true
     },
