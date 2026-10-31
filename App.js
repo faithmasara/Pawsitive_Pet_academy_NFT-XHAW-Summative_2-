@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -98,6 +98,15 @@ function AppButton({ title, onPress, secondary = false }) {
 }
 
 function App() {
+    const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
   const [screen, setScreen] = useState('Home');
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedCourses, setSelectedCourses] = useState([]);
@@ -711,7 +720,27 @@ function App() {
         return <HomeScreen />;
     }
   };
-
+if (showSplash) {
+  return (
+    <SafeAreaView style={{
+      flex: 1,
+      backgroundColor: '#E8F3F1',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+      <Image
+        source={require('./assets/pawsitive_original_logo.png')}
+        style={{ width: 260, height: 260, resizeMode: 'contain' }}
+      />
+      <Text style={{ color: '#23374B', fontSize: 22, fontWeight: 'bold', marginTop: 20 }}>
+        Pawsitive Pet Academy
+      </Text>
+      <Text style={{ color: '#369187', fontSize: 13, marginTop: 8, letterSpacing: 1 }}>
+        CARE • TRAINING • CONFIDENCE
+      </Text>
+    </SafeAreaView>
+  );
+}
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
