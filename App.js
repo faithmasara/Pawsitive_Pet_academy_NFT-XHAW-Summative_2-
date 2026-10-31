@@ -432,7 +432,8 @@ function App() {
     </ScrollView>
   );
 
-  const QuoteScreen = () => (
+  const QuoteScreen
+   = () => (
     <ScrollView keyboardShouldPersistTaps="handled">
       <View style={styles.pageHeading}>
         <Text style={styles.sectionEyebrow}>LET'S GET STARTED</Text>
@@ -703,7 +704,7 @@ function App() {
       case 'Details':
         return <DetailsScreen />;
       case 'Quote':
-        return <QuoteScreen />;
+        return QuoteScreen();
       case 'Confirmation':
         return <ConfirmationScreen />;
       case 'About':
