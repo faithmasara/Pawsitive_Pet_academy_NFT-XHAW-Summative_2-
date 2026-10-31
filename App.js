@@ -27,51 +27,59 @@ const COLORS = {
 const courses = [
   {
     id: '1',
-    name: 'Professional Pet Care',
+    name: 'Canine Obedience Training',
     category: 'Six-Month Courses',
     duration: '6 Months',
-    description:
-      'Develop professional knowledge and practical skills in caring for animals.',
+    price: 1500,
+    description: 'Learn effective dog obedience and behavioural training techniques.',
   },
   {
     id: '2',
-    name: 'Dog Training Programme',
-    category: 'Six-Month Courses',
-    duration: '6 Months',
-    description:
-      'Learn practical dog training techniques and responsible animal handling.',
-  },
-  {
-    id: '3',
     name: 'Pet Grooming',
     category: 'Six-Month Courses',
     duration: '6 Months',
-    description:
-      'Explore grooming techniques and essential pet hygiene practices.',
+    price: 1500,
+    description: 'Develop professional grooming skills for domestic pets.',
+  },
+  {
+    id: '3',
+    name: 'Animal Behaviour',
+    category: 'Six-Month Courses',
+    duration: '6 Months',
+    price: 1500,
+    description: 'Understand animal psychology, behaviour and communication.',
   },
   {
     id: '4',
-    name: 'Pet First Aid',
-    category: 'Six-Week Short Courses',
-    duration: '6 Weeks',
-    description:
-      'Learn introductory first aid and basic emergency care for pets.',
+    name: 'Pet Business Management',
+    category: 'Six-Month Courses',
+    duration: '6 Months',
+    price: 1500,
+    description: 'Learn how to operate and manage a successful pet-related business.',
   },
   {
     id: '5',
     name: 'Puppy Care',
     category: 'Six-Week Short Courses',
     duration: '6 Weeks',
-    description:
-      'Understand puppy development, socialisation and everyday care.',
+    price: 750,
+    description: 'Learn essential puppy care, feeding, vaccination and socialisation.',
   },
   {
     id: '6',
-    name: 'Basic Dog Training',
+    name: 'Pet First Aid',
     category: 'Six-Week Short Courses',
     duration: '6 Weeks',
-    description:
-      'Learn the foundations of positive dog training.',
+    price: 750,
+    description: 'Learn basic emergency first aid and safety procedures for pets.',
+  },
+  {
+    id: '7',
+    name: 'Basic Dog Walking',
+    category: 'Six-Week Short Courses',
+    duration: '6 Weeks',
+    price: 750,
+    description: 'Learn safe and professional dog walking practices.',
   },
 ];
 
@@ -218,7 +226,7 @@ function App() {
           {course.description}
         </Text>
         <Text style={styles.feeText}>
-          Course fee: To be confirmed
+          Course fee: R{course.price.toLocaleString('en-ZA')}
         </Text>
 
         <AppButton
@@ -394,6 +402,9 @@ function App() {
         <Text style={styles.duration}>
           {selectedCourse?.duration}
         </Text>
+             <Text style={styles.feeText}>
+        Course fee: R{selectedCourse?.price?.toLocaleString('en-ZA')}
+      </Text>
       </View>
 
       <View style={styles.section}>
