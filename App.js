@@ -127,7 +127,17 @@ function App() {
     selectedCourses.length >= 4 ? 15 :
     selectedCourses.length === 3 ? 10 :
     selectedCourses.length === 2 ? 5 : 0;
+const selectedCourseDetails = courses.filter((course) =>
+  selectedCourses.includes(course.id)
+);
 
+const subtotal = selectedCourseDetails.reduce(
+  (sum, course) => sum + course.price,
+  0
+);
+
+const discountAmount = subtotal * (discount / 100);
+const total = subtotal - discountAmount;
   const toggleCourse = (id) => {
     setSelectedCourses((previous) =>
       previous.includes(id)
@@ -561,12 +571,27 @@ function App() {
       <Text style={styles.bodyText}>
         Your quotation request has been prepared successfully.
       </Text>
-      <Text style={styles.bodyText}>
-        Selected courses: {selectedCourses.length}
-      </Text>
-      <Text style={styles.bodyText}>
-        Applicable discount: {discount}%
-      </Text>
+      <View style={styles.section}>
+  <Text style={styles.sectionTitle}>Your Quotation</Text>
+
+  {selectedCourseDetails.map((course) => (
+    <Text key={course.id} style={styles.bodyText}>
+      {course.name}: R{course.price.toLocaleString('en-ZA')}
+    </Text>
+  ))}
+
+  <Text style={styles.bodyText}>
+    Subtotal: R{subtotal.toLocaleString('en-ZA')}
+  </Text>
+
+  <Text style={styles.bodyText}>
+    Discount ({discount}%): -R{discountAmount.toLocaleString('en-ZA')}
+  </Text>
+
+  <Text style={styles.selectionTitle}>
+    Total payable: R{total.toLocaleString('en-ZA')}
+  </Text>
+</View>
       <Text style={styles.smallText}>
         This demonstration does not send information to a server.
       </Text>
